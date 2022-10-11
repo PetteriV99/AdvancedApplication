@@ -7,11 +7,23 @@ const noteSchema = new mongoose.Schema(
             required: true
         },
         author: {
-            type: String, required: true
+            type: String,
+            required: true
+        },
+        favoriteCount: {
+            type: Number,
+            default: 0
         },
         disabled: {
-            type: Boolean, required: true
-        }
+            type: Boolean,
+            default: false
+        },
+        favoritedBy: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'User'
+            }
+        ]
     },
     {
         timestamps: true
